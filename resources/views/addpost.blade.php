@@ -71,4 +71,14 @@
 
 </div>
 
+<div class="container">
+	@foreach($post as $item)
+	<li>{{$item->posttitle}}</li>
+	@endforeach
+{{ $post->links() }}
+<a href="javascript:void(0)" data-href="/addPost/ajax/get/" id="click_me">Click</a>
+<div class="ajax_ata">
+</div>
+</div>
+
 @endsection

@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <!--script src="{{ asset('js/app.js') }}" defer></script-->
-    <script src="{{ url('../resources/js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -88,5 +87,21 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="{{ url('../resources/js/app.js') }}" defer></script>
+<script>
+
+$("#click_me").click(function(){
+	
+	$.ajax({
+		url:jQuery(this).attr("data-href"),
+		type:"GET",
+		success:function(data){
+			$(".ajax_ata").html(data.html);
+		}
+		
+	});
+});
+</script>
 </body>
 </html>

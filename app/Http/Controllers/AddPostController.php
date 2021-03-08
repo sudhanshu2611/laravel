@@ -13,14 +13,14 @@ class AddPostController extends Controller
 	 public function index()
     {	
 	
-$posts = DB::table('add_posts')->get()->sortBy("id");
-foreach($posts as $p){
-	echo $p->posttitle;
-}
+$posts = DB::table('add_posts');
+// foreach($posts as $p){
+	// echo $p->posttitle;
+// }
 
 
 $u= Auth::user();
-echo $u->id;
+//echo $u->id;
 
 $data = DB::table('add_posts')
     ->join('users', 'users.id', '=', 'add_posts.id')
@@ -32,7 +32,7 @@ $data = DB::table('add_posts')
 // echo '<pre>';
 // print_R($data);
 // exit;
-       return view('addpost');
+       return view('addpost',['post'=>$posts->simplePaginate("5")]);
     }
 	 private $form_rules =[
             'posttitle' => ['required', 'string'],
@@ -96,5 +96,9 @@ $data = DB::table('add_posts')
 					);
 			 }
 return redirect()->back()->with('message', 'IT WORKS!');
+		}
+		function getajaxdata(){
+			
+			return response()->json(["html"=>"<h2>WOR</h2>"],200);
 		}
 }

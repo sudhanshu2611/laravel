@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Http\Controllers\ExternalApi;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+       $this->app->singleTon(ExternalApi::class,function(){
+		   return new ExternalApi("Hello API");
+	   });
     }
 
     /**
